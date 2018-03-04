@@ -5,6 +5,6 @@
       {{player.name}}
     </h3>
     <div class="mb-1 text-muted">Level: {{player.level}}</div>
-    <a href="#" class="btn btn-sm btn-info">Details Info</a>
+    <a [routerLink]="['/player', player.id]" class="btn btn-sm btn-info">Details Info</a>
   </div>
 </div>

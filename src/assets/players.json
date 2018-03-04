@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "photo": "http://via.placeholder.com/150x150",
         "name": "Player1",
         "level": "Expert",
@@ -7,9 +8,10 @@
             "played": 40,
             "won": 29
         },
-        "goalsScore": 140
+        "goalsScored": 340
     },
     {
+        "id": 2,
         "photo": "http://via.placeholder.com/150x150",
         "name": "Player2",
         "level": "Expert",
@@ -17,19 +19,21 @@
             "played": 40,
             "won": 29
         },
-        "goalsScore": 140
+        "goalsScored": 40
     },
     {
+        "id": 3,
         "photo": "http://via.placeholder.com/150x150",
         "name": "Player3",
         "level": "Expert",
         "games": {
-            "played": 40,
-            "won": 29
+            "played": 2,
+            "won": 0
         },
-        "goalsScore": 140
+        "goalsScored": 10
     },
     {
+        "id": 4,
         "photo": "http://via.placeholder.com/150x150",
         "name": "Player4",
         "level": "Expert",
@@ -37,9 +41,10 @@
             "played": 40,
             "won": 29
         },
-        "goalsScore": 140
+        "goalsScored": 140
     },
     {
+        "id": 5,
         "photo": "http://via.placeholder.com/150x150",
         "name": "Player5",
         "level": "Expert",
@@ -47,6 +52,6 @@
             "played": 40,
             "won": 29
         },
-        "goalsScore": 140
+        "goalsScored": 140
     }
 ]

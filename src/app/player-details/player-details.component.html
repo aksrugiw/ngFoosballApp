@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Player Details</h1>
+      <button class="btn btn-sm btn-info" (click)="onBack()">Back</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <img class="card-img-left flex-auto d-none d-md-block" src="{{player?.photo}}" alt="{{player?.name}}">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h3 class="mb-0">
+                {{player?.name}}
+              </h3>
+              <div class="mb-1 text-muted">Level: {{player?.level}}</div>
+              <p>Games played: {{player?.games.played}}</p>
+              <p>Games won: {{player?.games.won}}</p>
+              <p>Goals scored: {{player?.goalsScored}}</p>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

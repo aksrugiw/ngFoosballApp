@@ -11,8 +11,13 @@ export class PlayerService {
 
   constructor(private _http: HttpClient) { }
   
-  public fetchPlayers() {
-    return this._http.get<Player>(this.apiUrl);
+  fetchPlayers() : Observable<Player[]> {
+    return this._http.get<Player[]>(this.apiUrl);
+  }
+
+  getPlayer(playerId: number) : Observable<Player> {
+    return this._http.get<Player[]>(this.apiUrl)
+            .map(players => players.find(p => p.id === playerId));
   }
 
 }

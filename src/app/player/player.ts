@@ -1,4 +1,5 @@
 export interface Player {
+        id: number,
         photo: string,
         name: string,
         level: string,
@@ -6,5 +7,5 @@ export interface Player {
             played: number,
             won: number
         },
-        goalsScore: number
+        goalsScored: number
 }
