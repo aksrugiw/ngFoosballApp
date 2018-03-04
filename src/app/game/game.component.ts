@@ -25,6 +25,10 @@ export class GameComponent implements OnInit {
       players: []
     },
   ];
+  gameResults = {
+    playerScores: [],
+    winnersTeamId: null
+  };
   actualTeam;
   invitingPlayers: boolean = false;
   errorMessage: string;
@@ -58,13 +62,27 @@ export class GameComponent implements OnInit {
   playGame() : void {
     if((this.teams[0].players.length === 2 || this.teams[0].players.length === 4)
       && this.teams[1].players.length === 2 || this.teams[1].players.length === 4) {
-      this.errorMessage = '';
+      this.gameState = 'start';
+      this._router.navigate(['/game', this.gameState]);
     }
     else {
       this.errorMessage = 'Teams are incomplete';
         return;
     }
+  }
 
+  saveGame() : void {
+    for(let i = 0; i < this.teams.length; i++) {
+      this.teams[i].players.forEach(player => {
+        player.goalsScored += this.gameResults.playerScores[player.name];
+        player.games.played++;
+        if(this.gameResults.winnersTeamId === this.teams[i].id) {
+          player.games.won++;
+        }
+      })
+    }
+    this.gameState = 'result';
+    this._router.navigate(['/game', this.gameState]);
   }
 
 }

@@ -14,20 +14,72 @@
       <button class="btn btn-info" (click)="addToActualTeam()">Invite</button>
     </div>
   </div>
-   
 
   <div class="row">
     <div class="col" *ngFor="let team of teams">
       <h2>{{team.name}}</h2>
-      <button class="btn btn-sm btn-info mb-2" (click)="setActualTeam(team)">Invite to the team</button>
       <player *ngFor="let player of team.players" [player]="player"></player>
+      <button class="btn btn-sm btn-info mb-2" (click)="setActualTeam(team)">Invite to the team</button>
     </div>
   </div>
 
   <div class="row mt-4">
     <div class="col text-center">
       <p class="text-danger" *ngIf="errorMessage">{{errorMessage}}</p>
-      <button class="btn btn-success" (click)="playGame()">Play</button>
+      <button class="btn btn-success" *ngIf="gameState === 'new'" (click)="playGame()">Play</button>
     </div>
   </div>
 </div>
+
+<div class="container" *ngIf="gameState === 'start'">
+  <div class="row">
+    <div class="col">
+        <h1>Let's Play!</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" *ngFor="let team of teams">
+      <h2>{{team.name}}</h2>
+        <label for="winner_{{team.id}}">Who won?</label>
+        <input id="winner_{{team.id}}" type="radio" name="winner" [value]="team.id" [(ngModel)]="gameResults.winnersTeamId">
+
+      <ng-container *ngFor="let player of team.players">
+        <player [player]="player"></player>
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+          <div class="card-body d-flex justify-content-between">
+            Goals scored: <input type="text" [(ngModel)]="gameResults.playerScores[player.name]" >
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col text-center">
+      <button class="btn btn-success" (click)="saveGame()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="gameState === 'result'">
+    <div class="row">
+      <div class="col">
+          <h1>End of Game!</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" *ngFor="let team of teams">
+        <h2>{{team.name}} <span class="text-success" *ngIf="gameResults.winnersTeamId === team.id"> - the winners! </span></h2>
+        
+  
+        <ng-container *ngFor="let player of team.players">
+          <player [player]="player"></player>
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex justify-content-between">
+              Goals scored: {{gameResults.playerScores[player.name]}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
