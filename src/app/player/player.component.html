@@ -1,5 +1,10 @@
-<article>
-  <img src="{{player.photo}}" alt="{{player.name}}">
-  <p>{{player.name}}</p>
-  <p>Level: {{player.level}}</p>
-</article>
+<div class="card flex-md-row mb-4 box-shadow h-md-250">
+  <img class="card-img-left flex-auto d-none d-md-block" src="{{player.photo}}" alt="{{player.name}}">
+  <div class="card-body d-flex flex-column align-items-start">
+    <h3 class="mb-0">
+      {{player.name}}
+    </h3>
+    <div class="mb-1 text-muted">Level: {{player.level}}</div>
+    <a href="#" class="btn btn-sm btn-info">Details Info</a>
+  </div>
+</div>
