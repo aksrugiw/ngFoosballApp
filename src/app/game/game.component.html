@@ -11,7 +11,7 @@
         <option value="----">choose player</option>
         <option *ngFor="let player of playerList" [ngValue]="player">{{ player.name }}</option>
       </select>
-      <button class="btn btn-success" (click)="addToActualTeam()">Invite</button>
+      <button class="btn btn-info" (click)="addToActualTeam()">Invite</button>
     </div>
   </div>
    
@@ -19,8 +19,15 @@
   <div class="row">
     <div class="col" *ngFor="let team of teams">
       <h2>{{team.name}}</h2>
-      <button class="btn btn-sm btn-success mb-2" (click)="setActualTeam(team)">Invite to the team</button>
+      <button class="btn btn-sm btn-info mb-2" (click)="setActualTeam(team)">Invite to the team</button>
       <player *ngFor="let player of team.players" [player]="player"></player>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col text-center">
+      <p class="text-danger" *ngIf="errorMessage">{{errorMessage}}</p>
+      <button class="btn btn-success" (click)="playGame()">Play</button>
     </div>
   </div>
 </div>

@@ -27,6 +27,7 @@ export class GameComponent implements OnInit {
   ];
   actualTeam;
   invitingPlayers: boolean = false;
+  errorMessage: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -52,6 +53,18 @@ export class GameComponent implements OnInit {
     if (this.selectedPlayer !== undefined) {
       this.teams[this.actualTeam.id - 1].players.push(this.selectedPlayer);
     }
+  }
+
+  playGame() : void {
+    if((this.teams[0].players.length === 2 || this.teams[0].players.length === 4)
+      && this.teams[1].players.length === 2 || this.teams[1].players.length === 4) {
+      this.errorMessage = '';
+    }
+    else {
+      this.errorMessage = 'Teams are incomplete';
+        return;
+    }
+
   }
 
 }
