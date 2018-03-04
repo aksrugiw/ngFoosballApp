@@ -7,8 +7,8 @@
   <div class="row">
     <div class="col-md-6" [ngClass]="{'offset-md-6': actualTeam.name === 'Team B'}" *ngIf="invitingPlayers">
       <p>Invite player to: {{ actualTeam.name }}</p>
+      <p class="text-danger" *ngIf="errorMessage.invite">{{errorMessage.invite}}</p>
       <select [(ngModel)]="selectedPlayer">
-        <option value="----">choose player</option>
         <option *ngFor="let player of playerList" [ngValue]="player">{{ player.name }}</option>
       </select>
       <button class="btn btn-info" (click)="addToActualTeam()">Invite</button>
@@ -25,7 +25,7 @@
 
   <div class="row mt-4">
     <div class="col text-center">
-      <p class="text-danger" *ngIf="errorMessage">{{errorMessage}}</p>
+      <p class="text-danger" *ngIf="errorMessage.play">{{errorMessage.play}}</p>
       <button class="btn btn-success" *ngIf="gameState === 'new'" (click)="playGame()">Play</button>
     </div>
   </div>

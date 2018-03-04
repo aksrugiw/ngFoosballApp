@@ -31,7 +31,10 @@ export class GameComponent implements OnInit {
   };
   actualTeam;
   invitingPlayers: boolean = false;
-  errorMessage: string;
+  errorMessage = {
+    play: '',
+    invite: ''
+  };
 
   constructor(
     private _route: ActivatedRoute,
@@ -54,8 +57,27 @@ export class GameComponent implements OnInit {
   }
 
   addToActualTeam() : void {
-    if (this.selectedPlayer !== undefined) {
-      this.teams[this.actualTeam.id - 1].players.push(this.selectedPlayer);
+    let actualTeamIndex = this.actualTeam.id - 1;
+    let otherTeamIndex = 1 - actualTeamIndex;
+    let isMemberOfOtherTeam = this.teams[otherTeamIndex].players.indexOf(this.selectedPlayer) > -1;
+    this.errorMessage.invite = '';
+
+    if (this.selectedPlayer === undefined) {
+      this.errorMessage.invite = 'Please choose a player';
+      return;
+    }
+    else if (this.actualTeam.players.includes(this.selectedPlayer)) {
+      this.errorMessage.invite = 'This player is already a member';      
+      return;
+    }
+    else {
+      if(isMemberOfOtherTeam) {
+        let indexInOtherTeam = this.teams[otherTeamIndex].players.indexOf(this.selectedPlayer);
+        // remove from the other team
+        this.teams[otherTeamIndex].players.splice(indexInOtherTeam, 1);
+      }
+      this.teams[actualTeamIndex].players.push(this.selectedPlayer);
+
     }
   }
 
@@ -66,7 +88,7 @@ export class GameComponent implements OnInit {
       this._router.navigate(['/game', this.gameState]);
     }
     else {
-      this.errorMessage = 'Teams are incomplete';
+      this.errorMessage.play = 'Teams are incomplete';
         return;
     }
   }
