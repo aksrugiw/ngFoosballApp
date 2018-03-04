@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Player } from "../player/player";
@@ -18,7 +19,7 @@ export class PlayerDetailsComponent implements OnInit {
   constructor(
     private _playerService: PlayerService,
     private _route: ActivatedRoute,
-    private _router: Router,
+    private _location: Location,
   ) {
     this._route.params.subscribe( params => this.playerId = +params['id']);
   }
@@ -31,7 +32,7 @@ export class PlayerDetailsComponent implements OnInit {
   }
 
   onBack() : void {
-    this._router.navigate(['/']);
+    this._location.back();
   }
 
 }

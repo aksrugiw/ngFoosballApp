@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-between">
       <h1>Players</h1>
+      <p class="align-self-end align-items-end">
+        <a [routerLink]="['/game', 'new']" class="btn btn-sm btn-success">Create</a>
+      </p>
   </div>
   <div class="row">
     <div *ngFor="let player of playerList" class="col-md-6">

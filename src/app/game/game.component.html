@@ -1,0 +1,26 @@
+<div class="container" *ngIf="gameState === 'new'">
+  <div class="row">
+    <div class="col">
+        <h1>Create A Game</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" [ngClass]="{'offset-md-6': actualTeam.name === 'Team B'}" *ngIf="invitingPlayers">
+      <p>Invite player to: {{ actualTeam.name }}</p>
+      <select [(ngModel)]="selectedPlayer">
+        <option value="----">choose player</option>
+        <option *ngFor="let player of playerList" [ngValue]="player">{{ player.name }}</option>
+      </select>
+      <button class="btn btn-success" (click)="addToActualTeam()">Invite</button>
+    </div>
+  </div>
+   
+
+  <div class="row">
+    <div class="col" *ngFor="let team of teams">
+      <h2>{{team.name}}</h2>
+      <button class="btn btn-sm btn-success mb-2" (click)="setActualTeam(team)">Invite to the team</button>
+      <player *ngFor="let player of team.players" [player]="player"></player>
+    </div>
+  </div>
+</div>
