@@ -1,0 +1,52 @@
+[
+    {
+        "photo": "http://via.placeholder.com/150x150",
+        "name": "Player1",
+        "level": "Expert",
+        "games": {
+            "played": 40,
+            "won": 29
+        },
+        "goalsScore": 140
+    },
+    {
+        "photo": "http://via.placeholder.com/150x150",
+        "name": "Player2",
+        "level": "Expert",
+        "games": {
+            "played": 40,
+            "won": 29
+        },
+        "goalsScore": 140
+    },
+    {
+        "photo": "http://via.placeholder.com/150x150",
+        "name": "Player3",
+        "level": "Expert",
+        "games": {
+            "played": 40,
+            "won": 29
+        },
+        "goalsScore": 140
+    },
+    {
+        "photo": "http://via.placeholder.com/150x150",
+        "name": "Player4",
+        "level": "Expert",
+        "games": {
+            "played": 40,
+            "won": 29
+        },
+        "goalsScore": 140
+    },
+    {
+        "photo": "http://via.placeholder.com/150x150",
+        "name": "Player5",
+        "level": "Expert",
+        "games": {
+            "played": 40,
+            "won": 29
+        },
+        "goalsScore": 140
+    }
+]
